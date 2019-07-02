@@ -64,7 +64,7 @@ class MakeList extends React.Component {
             <div>
                {this.props.step!==3 ? <div><label>Input {this.props.step}: </label><input id="stuff" onKeyPress={this.enterPressed.bind(this)}></input>
                 <button onClick={this.handleSubmit} style={{position:"relative", marginLeft:"50px"}}>Add</button>
-                <button onClick={this.Finished} style={{position:"relative", marginLeft:"250px"}}>Next</button></div>:""}
+                <button onClick={this.Finished} style={{position:"relative", marginLeft:"250px", backgroundColor:"green", color:"white"}}>Next</button></div>:""}
 
 
                 <Sort values={this.state.list}/>
