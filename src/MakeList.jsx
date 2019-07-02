@@ -16,15 +16,7 @@ class MakeList extends React.Component {
     componentDidUpdate(prevProps, prevState, snapshot){
         if(this.props.step !== prevProps.step)
         if(this.props.step === 3){
-            var fir = this.props.first.map(element => 
-                // element.concat(" 1")
-                element
-            );
-            var sec = this.props.second.map(element => 
-                // element.concat(" 2")
-                element
-            );
-            var both = this.onlyUnique(fir,sec)
+            var both = this.onlyUnique(this.props.first,this.props.second)
             this.setState({list: both})
          }else{
              this.setState({list:[]})
@@ -32,10 +24,6 @@ class MakeList extends React.Component {
     }
 
     onlyUnique(first,second) { 
-        console.log({first,second})
-        // var unique = first.map(element => 
-        //     element.concat(" 1")
-        // );
         var unique1 = first.map(element => {
                 var object = element.concat(" 1")
                 if(second.indexOf(element) !== -1){
@@ -48,13 +36,13 @@ class MakeList extends React.Component {
         var unique2 = second.map(element =>{
                 return element.concat(" 2")
         })
-        console.log({unique1,unique2})
 
         return unique1.concat(unique2);
     }
 
     handleSubmit(){
-        var value = window.document.getElementById("stuff").value;
+        var value = window.document.getElementById("stuff").value.trim();
+
         if(value && this.state.list.indexOf(value.toUpperCase())===-1)
             this.setState({list:this.state.list.concat(value.toUpperCase())}, ()=> {window.document.getElementById("stuff").value=""; window.document.getElementById("stuff").focus()});
     }
